@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { isSingInSelector } from "../selectors";
+import { isSingInSelector } from "../../../store/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmployeeData } from "../thunk";
 
