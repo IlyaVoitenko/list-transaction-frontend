@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import { isSingInSelector } from "../../../store/selectors";
+import { isSingInSelector } from "../../store/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmployeeData } from "../thunk";
 
 const Auth = () => {
-  //   const isSingIn = useSelector(isSingInSelector);
+  const isSingIn = useSelector(isSingInSelector);
   const [login, setLogin] = useState(null);
   const [password, setPassword] = useState(null);
   //i.agarkov
