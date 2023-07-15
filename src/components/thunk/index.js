@@ -3,6 +3,7 @@ import {
   loadDetailTransaction,
   loadSearchNumberPhone,
   loadSingIn,
+  testLoginClient,
 } from "../API";
 import {
   getErrorAuthMessage,
@@ -32,7 +33,7 @@ export function getDetailTransaction(id) {
 
 export function getEmployeeData(login, password) {
   return (dispatch) => {
-    loadSingIn(login, password)
+    testLoginClient(login, password)
       .then((data) => {
         dispatch(setEmployee(data.employee));
         dispatch(getErrorAuthMessage(false));

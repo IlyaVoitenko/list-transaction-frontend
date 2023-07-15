@@ -1,10 +1,14 @@
 import React, { useState } from "react";
-import { isSingInSelector } from "../../store/selectors";
+import lodash from "lodash";
+import { useNavigate } from "react-router-dom";
+import { isSingInSelector, employeeSelector } from "../../store/selectors";
 import { useDispatch, useSelector } from "react-redux";
 import { getEmployeeData } from "../thunk";
 
 const Auth = () => {
+  const navigate = useNavigate();
   const isSingIn = useSelector(isSingInSelector);
+  const employee = useSelector(employeeSelector);
   const [login, setLogin] = useState(null);
   const [password, setPassword] = useState(null);
   //i.agarkov
@@ -12,26 +16,26 @@ const Auth = () => {
   const dispatch = useDispatch();
   return (
     <div className="flex items-center justify-center	bg-neutral-900  h-screen align">
-      <div className="flex flex-col items-center justify-center f  h-3/6 w-[20%] space-y-4 md:space-y-6">
-        {isSingIn ? (
+      <form className="flex flex-col items-center justify-center f  h-3/6 w-[20%] space-y-4 md:space-y-6">
+        {isSingIn && (
           <div className="flex flex-col items-center justify-center f  bg-red-700 pl-2 pr-2 pt-2 pb-2">
             <span className="text-white ">
               Error: Incorrect login or password
             </span>
           </div>
-        ) : null}
+        )}
 
         <div>
           <label
-            htmlFor="email"
+            htmlFor="text"
             className="block mb-2 text-sm  text-slate-400  text-left"
           >
             Login
           </label>
           <input
-            type="email"
-            name="email"
-            id="email"
+            type="text"
+            name="text"
+            id="text"
             className="outline-none border-b-[1px] border-blue-700 bg-neutral-900  text-white pt-1 pb-1 "
             onChange={({ target }) => setLogin(target.value)}
             required=""
@@ -55,13 +59,19 @@ const Auth = () => {
         </div>
         <div className="flex items-center justify-center w-[60%]  ">
           <button
-            onClick={() => dispatch(getEmployeeData(login, password))}
+            onClick={(e) => {
+              e.preventDefault();
+              dispatch(getEmployeeData(login, password));
+              if (!lodash.isEmpty(employee)) {
+                navigate("/list-transactions");
+              }
+            }}
             className=" bg-blue-700  pt-2 pb-2 text-white rounded-md w-full"
           >
             submit
           </button>
         </div>
-      </div>
+      </form>
     </div>
   );
 };

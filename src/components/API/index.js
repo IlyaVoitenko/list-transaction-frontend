@@ -1,14 +1,21 @@
 import axios from "axios";
-const { URL_ADMIN, URL_USER, PSW_HASH, API_KEY_VALUE, TRANSACTION_URL } =
-  process.env;
+const {
+  REACT_APP_URL_ADMIN,
+  REACT_APP_URL_USER,
+  REACT_APP_PSW_HASH,
+  REACT_APP_API_KEY_VALUE,
+  REACT_APP_TRANSACTION_URL,
+  REACT_APP_TEST_URL_AUTH,
+} = process.env;
+const adminUrl = axios.create({ baseURL: REACT_APP_URL_ADMIN });
+const transUrl = axios.create({ baseURL: REACT_APP_TRANSACTION_URL });
+const userUrl = axios.create({ baseURL: REACT_APP_URL_USER });
 
-const adminUrl = axios.create({ baseURL: URL_ADMIN });
-const transUrl = axios.create({ baseURL: TRANSACTION_URL });
-const userUrl = axios.create({ baseURL: URL_USER });
+const testAuth = axios.create({ baseURL: REACT_APP_TEST_URL_AUTH });
 
-const loadPswhash = (login, password) => {
-  return adminUrl
-    .get(`${PSW_HASH}${login}%3A${password}`, {
+const loadPswhash = async (login, password) => {
+  return await adminUrl
+    .get(`${REACT_APP_PSW_HASH}${login}%3A${password}`, {
       headers: {
         accept: "application/json",
       },
@@ -25,7 +32,7 @@ export async function loadSingIn(login, password) {
   const config = {
     headers: {
       accept: "application/json",
-      "X-CC-Api-Key": API_KEY_VALUE,
+      "X-CC-Api-Key": REACT_APP_API_KEY_VALUE,
       "Content-Type": "application/json",
     },
   };
@@ -61,3 +68,16 @@ export function loadSearchNumberPhone(textSearchInput) {
     .then(({ data }) => console.log("loadSearchNumberPhone :", data))
     .catch((err) => console.warn("loadSearchNumberPhone:", err));
 }
+
+export const testLoginClient = async (login, password) => {
+  try {
+    const { data } = await testAuth.post(`login`, {
+      login,
+      password,
+    });
+    console.log(data);
+    return data;
+  } catch (error) {
+    console.warn(error);
+  }
+};
