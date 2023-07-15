@@ -7,6 +7,4 @@ export const arrayByNumberPhoneSelector = (state) =>
 export const isSingInSelector = (state) => state.isSingIn;
 export const getClientSelector = (state) => state.client;
 export const isModalClientSelector = (state) => state.isModalClient;
-export const getDetailInfoTransactionTestSelector = (state) =>
-  state.detailInfoTransactionTest;
 export const getArrayTestTransactions = (state) => state.testTransactions;

@@ -4,10 +4,10 @@ import { useSelector } from "react-redux";
 
 const NameWorker = () => {
   const employee = useSelector(employeeSelector);
-  const { roles, login } = employee;
+  const { role, login } = employee;
   return (
     <div>
-      {roles[1]} : {login}
+      {role} : {login}
     </div>
   );
 };
