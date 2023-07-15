@@ -1,17 +1,15 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { employeeSelector, getArrayTestTransactions } from "../selectors";
+import { getArrayTestTransactions } from "../../store/selectors";
 import TransactionTHead from "../TransactionTHead";
 import TransactionTBody from "../TransactionTBody";
-import { fetchTestTransactions } from "./helper";
-
+import { getListTransactions } from "../API";
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const testTransactions = useSelector(getArrayTestTransactions);
-  // const employee = useSelector(employeeSelector);
 
   useEffect(() => {
-    dispatch(fetchTestTransactions());
+    getListTransactions();
   }, [dispatch]);
 
   return (

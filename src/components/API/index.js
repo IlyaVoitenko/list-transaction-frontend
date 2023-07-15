@@ -5,13 +5,23 @@ const {
   REACT_APP_PSW_HASH,
   REACT_APP_API_KEY_VALUE,
   REACT_APP_TRANSACTION_URL,
+
   REACT_APP_TEST_URL_AUTH,
+  REACT_APP_TEST_GET_ALL_TRANS,
 } = process.env;
 const adminUrl = axios.create({ baseURL: REACT_APP_URL_ADMIN });
 const transUrl = axios.create({ baseURL: REACT_APP_TRANSACTION_URL });
 const userUrl = axios.create({ baseURL: REACT_APP_URL_USER });
 
 const testAuth = axios.create({ baseURL: REACT_APP_TEST_URL_AUTH });
+const testTrans = axios.create({ baseURL: REACT_APP_TEST_GET_ALL_TRANS });
+
+const setToken = (token, url) => {
+  if (token) {
+    return (url.defaults.headers.authorization = `Bearer ${token}`);
+  }
+  url.defaults.headers.authorization = ``;
+};
 
 const loadPswhash = async (login, password) => {
   return await adminUrl
@@ -75,7 +85,19 @@ export const testLoginClient = async (login, password) => {
       login,
       password,
     });
-    console.log(data);
+    console.log(data.employee.token);
+    setToken(data.employee.token, testAuth);
+
+    return data;
+  } catch (error) {
+    console.warn(error);
+  }
+};
+
+export const getListTransactions = async () => {
+  try {
+    const { data } = await testTrans.get("/");
+    console.log("trans :", data);
     return data;
   } catch (error) {
     console.warn(error);
