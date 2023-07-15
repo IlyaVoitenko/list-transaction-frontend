@@ -97,7 +97,6 @@ export const testLoginClient = async (login, password) => {
 export const getListTransactions = async () => {
   try {
     const { data } = await testTrans.get("/");
-    console.log("trans :", data);
     return data;
   } catch (error) {
     console.warn(error);

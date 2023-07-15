@@ -15,6 +15,7 @@ const TransactionsTable = () => {
   return (
     <div className="relative overflow-x-auto  shadow-md sm:rounded-lg ">
       <table className="table w-full text-gray-300 border-separate space-y-6 text-sm">
+        testTransactions
         <TransactionTHead data={testTransactions} />
         <TransactionTBody data={testTransactions} />
       </table>

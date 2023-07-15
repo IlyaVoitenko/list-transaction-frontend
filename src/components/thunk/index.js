@@ -11,7 +11,6 @@ import {
   getClientByIdUser,
   getSelectedTransactionAction,
   getArrayByNumberPhone,
-  getAccessToken,
   getClient,
 } from "../../store/createActions";
 
@@ -37,7 +36,6 @@ export function getEmployeeData(login, password) {
       .then((data) => {
         dispatch(setEmployee(data.employee));
         dispatch(getErrorAuthMessage(false));
-        dispatch(getAccessToken(data.accessToken));
       })
       .catch((err) => {
         dispatch(getErrorAuthMessage(true));

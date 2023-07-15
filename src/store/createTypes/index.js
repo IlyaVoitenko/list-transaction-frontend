@@ -9,7 +9,6 @@ export const GET_ARRAY_BY_NUMBER_PHONE = "GET_ARRAY_BY_NUMBER_PHONE";
 export const GET_INPUT_SEARCH_NUMBER_PHONE_TEXT =
   "GET_INPUT_SEARCH_NUMBER_PHONE_TEXT";
 export const IS_SING_IN = "IS_SING_IN";
-export const GET_ACCESS_TOKEN = "GET_ACCESS_TOKEN";
 export const IS_MODAL_CLIENT = "IS_MODAL_CLIENT";
 export const detailInfoTransactionTest = "detailInfoTransactionTest";
 export const setTestTransactions = "setTestTransactions";

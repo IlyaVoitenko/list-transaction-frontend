@@ -8,7 +8,6 @@ import {
   GET_INPUT_SEARCH_NUMBER_PHONE_TEXT,
   GET_ARRAY_BY_NUMBER_PHONE,
   GET_CLIENT_BY_ID_USER,
-  GET_ACCESS_TOKEN,
   IS_MODAL_CLIENT,
   detailInfoTransactionTest,
   GET_ARRAY_SORTED_BY_ID_TRANSACTIONS,
@@ -50,9 +49,6 @@ export function LogOutEmployeeAction(payload) {
 }
 export function getErrorAuthMessage(payload) {
   return { type: IS_SING_IN, payload };
-}
-export function getAccessToken(payload) {
-  return { type: GET_ACCESS_TOKEN, payload };
 }
 export function setModalClient(payload) {
   return { type: IS_MODAL_CLIENT, payload };

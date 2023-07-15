@@ -6,7 +6,6 @@ import {
 import {
   SET_EMPLOYEE,
   GET_CLIENTS,
-  GET_ACCESS_TOKEN,
   GET_CLIENT,
   GET_SELECTED_TRANSACTION,
   GET_INPUT_SEARCH_NUMBER_PHONE_TEXT,
@@ -40,7 +39,6 @@ const initialState = {
   isValidSearch: null,
   isSingIn: false,
   detailInfoTransactionTest: {},
-  accessToken: "",
   testTransactions: [],
 };
 // check user name
@@ -50,8 +48,6 @@ const reducer = (state = initialState, action) => {
   switch (action.type) {
     case IS_MODAL_CLIENT:
       return { ...state, isModalClient: action.payload };
-    case GET_ACCESS_TOKEN:
-      return { ...state, accessToken: action.payload };
     case IS_SING_IN:
       return { ...state, isSingIn: action.payload };
     case GET_INPUT_SEARCH_NUMBER_PHONE_TEXT:
