@@ -6,7 +6,6 @@ import { useSelector } from "react-redux";
 
 const ProtectedRoute = () => {
   const employee = useSelector(employeeSelector);
-  console.log(employee);
   return !lodash.isEmpty(employee) ? <Outlet /> : <Navigate to="/" replace />;
 };
 

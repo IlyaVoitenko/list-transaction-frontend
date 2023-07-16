@@ -3,21 +3,22 @@ import { useDispatch, useSelector } from "react-redux";
 import { getArrayTestTransactions } from "../../store/selectors";
 import TransactionTHead from "../TransactionTHead";
 import TransactionTBody from "../TransactionTBody";
-import { getListTransactions } from "../API";
+import { getTestTransactionsAction } from "../thunk";
+
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const testTransactions = useSelector(getArrayTestTransactions);
-
+  console.log("testTransactions :", testTransactions);
   useEffect(() => {
-    getListTransactions();
-  }, [dispatch]);
+    dispatch(getTestTransactionsAction());
+  }, [testTransactions]);
 
   return (
-    <div className="relative overflow-x-auto  shadow-md sm:rounded-lg ">
+    <div className="relative overflow-x-auto  shadow-md sm:rounded-lg  h-screen">
       <table className="table w-full text-gray-300 border-separate space-y-6 text-sm">
         testTransactions
-        <TransactionTHead data={testTransactions} />
-        <TransactionTBody data={testTransactions} />
+        <TransactionTHead trans={testTransactions} />
+        <TransactionTBody trans={testTransactions} />
       </table>
     </div>
   );

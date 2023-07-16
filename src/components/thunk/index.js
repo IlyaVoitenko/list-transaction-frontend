@@ -4,6 +4,7 @@ import {
   loadSearchNumberPhone,
   loadSingIn,
   testLoginClient,
+  loadListTransactions,
 } from "../API";
 import {
   getErrorAuthMessage,
@@ -12,7 +13,17 @@ import {
   getSelectedTransactionAction,
   getArrayByNumberPhone,
   getClient,
+  setTestTransactionsAction,
 } from "../../store/createActions";
+
+export const getTestTransactionsAction = () => {
+  return (dispatch) => {
+    return loadListTransactions().then((data) => {
+      console.log("getTestTransactionsAction :", data);
+      dispatch(setTestTransactionsAction(data));
+    });
+  };
+};
 
 export function getTransactionsClients(numberPhoneClient) {
   return (dispatch) => {

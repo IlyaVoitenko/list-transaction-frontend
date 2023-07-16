@@ -18,9 +18,9 @@ const testTrans = axios.create({ baseURL: REACT_APP_TEST_GET_ALL_TRANS });
 
 const setToken = (token, url) => {
   if (token) {
-    return (url.defaults.headers.authorization = `Bearer ${token}`);
+    return (axios.defaults.headers.authorization = `Bearer ${token}`);
   }
-  url.defaults.headers.authorization = ``;
+  axios.defaults.headers.authorization = ``;
 };
 
 const loadPswhash = async (login, password) => {
@@ -85,7 +85,6 @@ export const testLoginClient = async (login, password) => {
       login,
       password,
     });
-    console.log(data.employee.token);
     setToken(data.employee.token, testAuth);
 
     return data;
@@ -94,10 +93,11 @@ export const testLoginClient = async (login, password) => {
   }
 };
 
-export const getListTransactions = async () => {
+export const loadListTransactions = async () => {
   try {
     const { data } = await testTrans.get("/");
-    return data;
+    console.log("testTrans :", data.trans);
+    return data.trans;
   } catch (error) {
     console.warn(error);
   }

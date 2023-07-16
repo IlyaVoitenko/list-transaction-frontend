@@ -7,9 +7,18 @@ import {
 
 const TBodyItem = ({ item }) => {
   const dispatch = useDispatch();
-  // const { body, login, password, phone, role, title, userId } = item || {};
-  const { id, name, username, email, address, company, phone, website } =
-    item || {};
+  const {
+    _id,
+    sender,
+    summa,
+    toPlace,
+    addressee,
+    fromPlace,
+    createdAt,
+    updatedAt,
+    isGot,
+    dateReceiving,
+  } = item || {};
   return (
     <tr
       onClick={() => {
@@ -17,7 +26,7 @@ const TBodyItem = ({ item }) => {
         dispatch(setModalClient(true));
       }}
       className={
-        id % 2 === 0
+        _id % 2 === 0
           ? " border-b bg-gray-1000 border-gray-700 text-left"
           : "border-b bg-gray-800 border-gray-700 text-left"
       }
@@ -26,17 +35,19 @@ const TBodyItem = ({ item }) => {
         scope="row"
         className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white my-8"
       >
-        {id}
+        {_id}
       </th>
-      <td className="px-6 py-2">{name}</td>
-      <td className="px-6 py-2">{username}</td>
-      <td className="px-6 py-2">{email}</td>
-      <td className="px-6 py-2">
-        {address.city} - {address.street}
-      </td>
-      <td className="px-6 py-2">{phone}</td>
-      <td className="px-6 py-2">{website}</td>
-      <td className="px-6 py-2">{company.name}</td>
+      <td className="px-6 py-2">{dateReceiving}</td>
+
+      <td className="px-6 py-2">{isGot}</td>
+
+      <td className="px-6 py-2">{sender}</td>
+      <td className="px-6 py-2">{summa}</td>
+      <td className="px-6 py-2">{toPlace}</td>
+      <td className="px-6 py-2">{addressee}</td>
+      <td className="px-6 py-2">{fromPlace}</td>
+      <td className="px-6 py-2">{updatedAt}</td>
+      <td className="px-6 py-2">{createdAt}</td>
     </tr>
   );
 };

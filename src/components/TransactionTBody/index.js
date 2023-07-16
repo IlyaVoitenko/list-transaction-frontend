@@ -1,10 +1,11 @@
 import React from "react";
 import TBodyItem from "./TBodyItem";
 
-const TransactionTBody = ({ data }) => {
+const TransactionTBody = ({ trans = [] }) => {
+  console.log("TransactionTBody :", trans);
   return (
     <tbody>
-      {data.map((item) => (
+      {trans.map((item) => (
         <TBodyItem key={item.id} item={item} />
       ))}
     </tbody>

@@ -2,7 +2,7 @@ import {
   sortedArrayByString,
   sortedArrayById,
   sortedArrayByNumberPhone,
-} from "./helper";
+} from "./transactions/helper";
 import {
   SET_EMPLOYEE,
   GET_CLIENTS,

@@ -1,9 +1,6 @@
 import React from "react";
 
 const AvatarClient = ({ data }) => {
-  // console.log("AvatarClient :", data); //will delete
-  // const { country, avatarUrl } = data || {};
-  // const upperCaseCounrty = country.toUpperCase();
   const defaultUlr = "/defaultAvatar.png";
   const defaultFlag = "/emptyFlag.jpg";
   const countries = [
@@ -38,19 +35,10 @@ const AvatarClient = ({ data }) => {
     { code: "ES", flag: "https://flagcdn.com/256x192/es.png" },
     { code: "PL", flag: "https://flagcdn.com/256x192/pl.png" },
   ];
-  // const actualCounctry = countries.find(
-  //   (countryItem) => countryItem.code === upperCaseCounrty
-  // );
-  // const { flag } = actualCounctry || {};
   const flag = "https://flagcdn.com/256x192/us.png"; //will delete
   return (
     <div className="flex flex-col items-center   space-y-4 ">
-      <img
-        // src={avatarUrl === "" ? defaultUlr : avatarUrl}
-        src={defaultUlr}
-        alt="Avatar"
-        className="w-[100px]"
-      />
+      <img src={defaultUlr} alt="Avatar" className="w-[100px]" />
       {flag === undefined ? (
         <span>country not found</span>
       ) : (

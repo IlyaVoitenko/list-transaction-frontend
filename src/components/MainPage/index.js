@@ -1,8 +1,9 @@
 import { useSelector } from "react-redux";
-import { employeeSelector, isModalClientSelector } from "../../store/selectors";
+import { isModalClientSelector } from "../../store/selectors";
 import Header from "../Header";
 import TransactionsTable from "../TransactionsTable";
 import InfoClientModal from "../InfoClientModal";
+import Footer from "../Footer";
 
 const MainPage = () => {
   const isModalClient = useSelector(isModalClientSelector);
@@ -10,7 +11,8 @@ const MainPage = () => {
     <div className="flex flex-col h-screen bg-neutral-900">
       <Header />
       <TransactionsTable />
-      {isModalClient ? <InfoClientModal /> : null}
+      {isModalClient && <InfoClientModal />}
+      <Footer />
     </div>
   );
 };
