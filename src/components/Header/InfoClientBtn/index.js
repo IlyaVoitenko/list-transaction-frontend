@@ -1,12 +1,12 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setModalClient } from "../../../store/createActions";
+// import { setModalClient } from "../../../store/createActions";
 
 function InfoClientBtn() {
   const dispatch = useDispatch();
   return (
     <button
-      onClick={() => dispatch(setModalClient(true))}
+      // onClick={() => dispatch(setModalClient(true))}
       type="button"
       className="px-6
     py-2.5

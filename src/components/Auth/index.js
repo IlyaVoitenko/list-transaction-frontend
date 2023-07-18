@@ -1,13 +1,16 @@
 import React, { useState } from "react";
 import lodash from "lodash";
 import { useNavigate } from "react-router-dom";
-import { isSingInSelector, employeeSelector } from "../../store/selectors";
+import {
+  isMessageErrorAuthSelector,
+  employeeSelector,
+} from "../../store/selectors";
 import { useDispatch, useSelector } from "react-redux";
-import { getEmployeeData } from "../thunk";
+import { setEmployee } from "../../store/thunk";
 
 const Auth = () => {
   const navigate = useNavigate();
-  const isSingIn = useSelector(isSingInSelector);
+  const isMessageError = useSelector(isMessageErrorAuthSelector);
   const employee = useSelector(employeeSelector);
   const [login, setLogin] = useState(null);
   const [password, setPassword] = useState(null);
@@ -17,7 +20,7 @@ const Auth = () => {
   return (
     <div className="flex items-center justify-center	bg-neutral-900  h-screen align">
       <form className="flex flex-col items-center justify-center f  h-3/6 w-[20%] space-y-4 md:space-y-6">
-        {isSingIn && (
+        {isMessageError && (
           <div className="flex flex-col items-center justify-center f  bg-red-700 pl-2 pr-2 pt-2 pb-2">
             <span className="text-white ">
               Error: Incorrect login or password
@@ -61,8 +64,10 @@ const Auth = () => {
           <button
             onClick={(e) => {
               e.preventDefault();
-              dispatch(getEmployeeData(login, password));
+              dispatch(setEmployee({ login, password }));
+              console.log("employee click", employee);
               if (!lodash.isEmpty(employee)) {
+                alert(true);
                 navigate("/list-transactions");
               }
             }}
