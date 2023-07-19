@@ -65,9 +65,7 @@ const Auth = () => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(setEmployee({ login, password }));
-              console.log("employee click", employee);
               if (!lodash.isEmpty(employee)) {
-                alert(true);
                 navigate("/list-transactions");
               }
             }}

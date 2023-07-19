@@ -8,10 +8,9 @@ import { setTransactions } from "../../store/thunk";
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const testTransactions = useSelector(getTestTransactions);
-  console.log(testTransactions);
   useEffect(() => {
     dispatch(setTransactions());
-  }, [testTransactions, dispatch]);
+  }, [dispatch]);
 
   return (
     <div className="relative overflow-x-auto  shadow-md sm:rounded-lg  h-screen">

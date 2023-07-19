@@ -1,9 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import {
-  getDetailInfoTransactionTestAction,
-  setModalClient,
-} from "../../../store/createActions";
+// import { getDetailInfoTransactionTestAction } from "../../../store/createActions";
+import { setModalClient } from "../../../store/reducer/clients";
 
 const TBodyItem = ({ item }) => {
   const dispatch = useDispatch();
@@ -19,10 +17,12 @@ const TBodyItem = ({ item }) => {
     isGot,
     dateReceiving,
   } = item || {};
+  const createdData = createdAt.split(".")[0];
+  const updatedData = updatedAt.split(".")[0];
   return (
     <tr
       onClick={() => {
-        dispatch(getDetailInfoTransactionTestAction(item));
+        // dispatch(getDetailInfoTransactionTestAction(item));
         dispatch(setModalClient(true));
       }}
       className={
@@ -41,13 +41,13 @@ const TBodyItem = ({ item }) => {
 
       <td className="px-6 py-2">{isGot}</td>
 
+      <td className="px-6 py-2"> {toPlace}</td>
+      <td className="px-6 py-2">{fromPlace}</td>
+      <td className="px-6 py-2">{addressee}</td>
       <td className="px-6 py-2">{sender}</td>
       <td className="px-6 py-2">{summa}</td>
-      <td className="px-6 py-2">{toPlace}</td>
-      <td className="px-6 py-2">{addressee}</td>
-      <td className="px-6 py-2">{fromPlace}</td>
-      <td className="px-6 py-2">{updatedAt}</td>
-      <td className="px-6 py-2">{createdAt}</td>
+      <td className="px-6 py-2">{createdData}</td>
+      <td className="px-6 py-2">{updatedData}</td>
     </tr>
   );
 };

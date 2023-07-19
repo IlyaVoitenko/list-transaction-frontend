@@ -25,7 +25,6 @@ export const setTransactions = createAsyncThunk(
   async (_, apiThunk) => {
     try {
       const transactions = await loadListTransactions();
-      console.log("trans/setTransactions :", transactions);
       if (!transactions) {
         throw new Error(404);
       }
