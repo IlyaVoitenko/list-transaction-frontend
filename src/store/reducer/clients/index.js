@@ -12,9 +12,15 @@ export const clientSlice = createSlice({
     setModalClient: (state, action) => {
       state.isModalClient = action.payload;
     },
+    setClient: (state, action) => {
+      state.client = action.payload;
+    },
+    clearClient: (state) => {
+      state.client = {};
+    },
   },
 });
 
-export const { setModalClient } = clientSlice.actions;
+export const { setModalClient, setClient, clearClient } = clientSlice.actions;
 
 export default clientSlice.reducer;

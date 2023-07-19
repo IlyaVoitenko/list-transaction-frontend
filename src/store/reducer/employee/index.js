@@ -8,6 +8,11 @@ const initialState = {
 export const employeeSlice = createSlice({
   name: "employee",
   initialState,
+  reducers: {
+    clearEmployee: (state) => {
+      state.employee = {};
+    },
+  },
   extraReducers: {
     [setEmployee.fulfilled]: (state, action) => {
       state.employee = { ...action.payload };
@@ -15,6 +20,6 @@ export const employeeSlice = createSlice({
   },
 });
 
-export const { _ } = employeeSlice.actions;
+export const { clearEmployee } = employeeSlice.actions;
 
 export default employeeSlice.reducer;
