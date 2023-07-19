@@ -8,4 +8,4 @@ export const isMessageErrorAuthSelector = (state) =>
   state.auth.authErrorMessage;
 export const getClientSelector = (state) => state.client;
 export const isModalClientSelector = (state) => state.isModalClient;
-export const getArrayTestTransactions = (state) => state.testTransactions;
+export const getTestTransactions = (state) => state.trans.transactions;

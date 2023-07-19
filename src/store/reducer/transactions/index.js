@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-
+import { setTransactions } from "../../thunk";
 const initialState = {
   transactions: [],
 };
@@ -7,14 +7,15 @@ const initialState = {
 export const transactionSlice = createSlice({
   name: "trans",
   initialState,
-  reducers: {
-    setTransactions: (state, action) => {
+  extraReducers: {
+    [setTransactions.fulfilled]: (state, action) => {
+      console.log(action.payload);
       state.transactions = action.payload;
     },
   },
 });
 
 // Action creators are generated for each case reducer function
-export const { setTransactions } = transactionSlice.actions;
+export const { _ } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

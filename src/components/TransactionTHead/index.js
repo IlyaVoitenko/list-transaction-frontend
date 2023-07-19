@@ -3,6 +3,7 @@ import THeadItem from "./THeadItem";
 import lodash from "lodash";
 
 const TransactionTHead = ({ trans = [] }) => {
+  console.log("TransactionTHead :", trans);
   return (
     <thead className="text-xs text-gray-700 uppercase text-left bg-gray-200 dark:bg-neutral-900  dark:text-white">
       <tr>

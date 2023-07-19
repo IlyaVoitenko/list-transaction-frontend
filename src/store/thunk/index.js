@@ -1,4 +1,4 @@
-import { testLoginClient } from "../../components/API";
+import { testLoginClient, loadListTransactions } from "../../components/API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setAuthErrorMessage } from "../reducer/auth";
 
@@ -8,7 +8,6 @@ export const setEmployee = createAsyncThunk(
     try {
       const { employee } = await testLoginClient(data.login, data.password);
       apiThunk.dispatch(setAuthErrorMessage(false));
-      console.log("setEmployee :", employee);
 
       if (!employee) {
         throw new Error(404);
@@ -17,6 +16,22 @@ export const setEmployee = createAsyncThunk(
     } catch (error) {
       apiThunk.rejectWithValue(error.message);
       apiThunk.dispatch(setAuthErrorMessage(true));
+    }
+  }
+);
+
+export const setTransactions = createAsyncThunk(
+  "trans/setTransactions",
+  async (_, apiThunk) => {
+    try {
+      const transactions = await loadListTransactions();
+      console.log("trans/setTransactions :", transactions);
+      if (!transactions) {
+        throw new Error(404);
+      }
+      return transactions;
+    } catch (error) {
+      apiThunk.rejectWithValue(error.message);
     }
   }
 );

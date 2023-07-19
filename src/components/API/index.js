@@ -9,23 +9,16 @@ const {
   REACT_APP_TEST_URL_AUTH,
   REACT_APP_TEST_GET_ALL_TRANS,
 } = process.env;
-const adminUrl = axios.create({ baseURL: REACT_APP_URL_ADMIN });
-const transUrl = axios.create({ baseURL: REACT_APP_TRANSACTION_URL });
-const userUrl = axios.create({ baseURL: REACT_APP_URL_USER });
 
-const testAuth = axios.create({ baseURL: REACT_APP_TEST_URL_AUTH });
-const testTrans = axios.create({ baseURL: REACT_APP_TEST_GET_ALL_TRANS });
-
-const setToken = (token, url) => {
-  if (token) {
-    return (axios.defaults.headers.authorization = `Bearer ${token}`);
-  }
-  axios.defaults.headers.authorization = ``;
+const setToken = (token) => {
+  token
+    ? (axios.defaults.headers.authorization = `Bearer ${token}`)
+    : (axios.defaults.headers.authorization = ``);
 };
 
 const loadPswhash = async (login, password) => {
-  return await adminUrl
-    .get(`${REACT_APP_PSW_HASH}${login}%3A${password}`, {
+  return await axios
+    .get(`${REACT_APP_URL_ADMIN}${REACT_APP_PSW_HASH}${login}%3A${password}`, {
       headers: {
         accept: "application/json",
       },
@@ -47,56 +40,53 @@ export async function loadSingIn(login, password) {
     },
   };
 
-  return adminUrl
-    .post("/employee-signin", body, config)
+  return axios
+    .post(`${REACT_APP_URL_ADMIN}/employee-signin`, body, config)
     .then(({ data }) => data)
     .catch((err) => console.warn(err));
 }
 export function loadTransactionsClient(idClient) {
-  return transUrl.get(`${idClient}`).then(({ data }) => {
-    return data;
-  });
+  return axios
+    .get(`${REACT_APP_TRANSACTION_URL}${idClient}`)
+    .then(({ data }) => {
+      return data;
+    });
 }
-
 export function loadDetailTransaction(id) {
-  return transUrl
-    .get(`${id}`)
+  return axios
+    .get(`${REACT_APP_TRANSACTION_URL}${id}`)
     .then(({ data }) => data)
     .catch((err) => console.warn(err));
 }
-
 export function loadGetUsers(login, password) {
   return axios
     .get(`http://localhost:4001/users?login=${login}&password=${password}`)
     .then(({ data }) => data)
     .catch((err) => console.warn(err));
 }
-
 export function loadSearchNumberPhone(textSearchInput) {
-  return userUrl
-    .get(`/_/find-by-alias/${textSearchInput} `)
+  return axios
+    .get(`${REACT_APP_URL_USER}/_/find-by-alias/${textSearchInput} `)
     .then(({ data }) => console.log("loadSearchNumberPhone :", data))
     .catch((err) => console.warn("loadSearchNumberPhone:", err));
 }
 
 export const testLoginClient = async (login, password) => {
   try {
-    const { data } = await testAuth.post(`login`, {
+    const { data } = await axios.post(`${REACT_APP_TEST_URL_AUTH}login`, {
       login,
       password,
     });
-    setToken(data.employee.token, testAuth);
+    setToken(data.employee.token);
 
     return data;
   } catch (error) {
     console.warn(error);
   }
 };
-
 export const loadListTransactions = async () => {
   try {
-    const { data } = await testTrans.get("/");
-    console.log("testTrans :", data.trans);
+    const { data } = await axios.get(`${REACT_APP_TEST_GET_ALL_TRANS}/`);
     return data.trans;
   } catch (error) {
     console.warn(error);

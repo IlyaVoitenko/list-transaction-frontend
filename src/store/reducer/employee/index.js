@@ -10,7 +10,6 @@ export const employeeSlice = createSlice({
   initialState,
   extraReducers: {
     [setEmployee.fulfilled]: (state, action) => {
-      console.log("action :", action.payload);
       state.employee = { ...action.payload };
     },
   },
