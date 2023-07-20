@@ -1,19 +1,17 @@
 import React from "react";
 
-const ClientData = ({ data }) => {
-  const { email, address, name, phone, username, company } = data || {};
+const ClientData = ({ client }) => {
   return (
     <div>
       <div className="pb-3 text-left">
         <p className="text-lg font-bold mb-2">Info about client</p>
-        <p className="text-gray-400">Name: {name}</p>
-        <p className="text-gray-400">User name: {username}</p>
-        <p className="text-gray-400">Email: {email}</p>
-        <p className="text-gray-400">Number phone: {phone}</p>
-        <p className="text-gray-400">Company: {company.name}</p>
         <p className="text-gray-400">
-          Address: {address.city} {address.street}
+          Name: {client.name} {client.surname}
         </p>
+        <p className="text-gray-400">Birthday: {client.birthday}</p>
+        <p className="text-gray-400">Email: {client.email}</p>
+        <p className="text-gray-400">Number phone: {client.numberPhone}</p>
+        <p className="text-gray-400">Country: {client.country}</p>
       </div>
     </div>
   );

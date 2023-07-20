@@ -6,15 +6,15 @@ import InfoClientBtn from "./InfoClientBtn";
 import FillterTransactions from "./FillterTransactions";
 import lodash from "lodash";
 import { useSelector } from "react-redux";
-import { employeeSelector } from "../../store/selectors";
+import { getClientSelector } from "../../store/selectors";
 
 const Header = () => {
-  const employee = useSelector(employeeSelector);
+  const client = useSelector(getClientSelector);
   return (
     <div className="flex text-white justify-around items-center  h-[7%]">
       <NameWorker />
       <SearchClient />
-      {!lodash.isEmpty(employee) && <InfoClientBtn />}
+      {!lodash.isEmpty(client) && <InfoClientBtn />}
       <FillterTransactions />
       <LogoutBtn />
     </div>

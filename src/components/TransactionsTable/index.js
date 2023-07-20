@@ -8,6 +8,7 @@ import { setTransactions } from "../../store/thunk";
 const TransactionsTable = () => {
   const dispatch = useDispatch();
   const testTransactions = useSelector(getTestTransactions);
+
   useEffect(() => {
     dispatch(setTransactions());
   }, [dispatch]);

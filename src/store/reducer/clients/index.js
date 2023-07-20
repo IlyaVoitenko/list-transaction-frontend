@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { setClient } from "../../thunk";
 
 const initialState = {
   client: {},
@@ -17,9 +18,7 @@ export const clientSlice = createSlice({
     setNumberPhone: (state, action) => {
       state.numberPhone = action.payload;
     },
-    setClient: (state, action) => {
-      state.client = action.payload;
-    },
+
     clearClient: (state) => {
       state.client = {};
     },
@@ -27,11 +26,15 @@ export const clientSlice = createSlice({
       state.isValidSearchClient = action.payload;
     },
   },
+  extraReducers: {
+    [setClient.fulfilled]: (state, action) => {
+      state.client = action.payload;
+    },
+  },
 });
 
 export const {
   setModalClient,
-  setClient,
   clearClient,
   setIsValidSearchClient,
   setNumberPhone,

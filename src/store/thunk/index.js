@@ -1,5 +1,6 @@
 import {
-  testLoginClient,
+  loadClient,
+  testLoginEmployee,
   loadListTransactions,
   loadListTransactionsClient,
 } from "../../components/API";
@@ -10,9 +11,8 @@ export const setEmployee = createAsyncThunk(
   "employee/setEmployee",
   async (data, apiThunk) => {
     try {
-      const { employee } = await testLoginClient(data.login, data.password);
+      const { employee } = await testLoginEmployee(data.login, data.password);
       apiThunk.dispatch(setAuthErrorMessage(false));
-
       if (!employee) {
         throw new Error(404);
       }
@@ -32,6 +32,7 @@ export const setTransactions = createAsyncThunk(
       if (!transactions) {
         throw new Error(404);
       }
+      console.log("setTransactions :", transactions);
       return transactions;
     } catch (error) {
       apiThunk.rejectWithValue(error.message);
@@ -48,6 +49,21 @@ export const setTransactionsClient = createAsyncThunk(
         throw new Error(404);
       }
       return data.clientTransactions;
+    } catch (error) {
+      apiThunk.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setClient = createAsyncThunk(
+  "client/setClient",
+  async (numberPhone, apiThunk) => {
+    try {
+      const { data } = await loadClient(numberPhone);
+      if (!data) {
+        throw new Error(404);
+      }
+      return data.client;
     } catch (error) {
       apiThunk.rejectWithValue(error.message);
     }
