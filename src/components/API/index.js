@@ -8,6 +8,7 @@ const {
 
   REACT_APP_TEST_URL_AUTH,
   REACT_APP_TEST_GET_ALL_TRANS,
+  REACT_APP_TEST_GET_ALL_TRANS_CLIENT,
 } = process.env;
 
 const setToken = (token) => {
@@ -70,7 +71,7 @@ export function loadSearchNumberPhone(textSearchInput) {
     .then(({ data }) => console.log("loadSearchNumberPhone :", data))
     .catch((err) => console.warn("loadSearchNumberPhone:", err));
 }
-
+//test
 export const testLoginClient = async (login, password) => {
   try {
     const { data } = await axios.post(`${REACT_APP_TEST_URL_AUTH}login`, {
@@ -88,6 +89,16 @@ export const loadListTransactions = async () => {
   try {
     const { data } = await axios.get(`${REACT_APP_TEST_GET_ALL_TRANS}/`);
     return data.trans;
+  } catch (error) {
+    console.warn(error);
+  }
+};
+export const loadListTransactionsClient = async (numberPhoneClient) => {
+  try {
+    const transactionsClient = await axios.get(
+      `${REACT_APP_TEST_GET_ALL_TRANS_CLIENT}${numberPhoneClient}`
+    );
+    return transactionsClient;
   } catch (error) {
     console.warn(error);
   }

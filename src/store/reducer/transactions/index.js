@@ -1,7 +1,8 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { setTransactions } from "../../thunk";
+import { setTransactions, setTransactionsClient } from "../../thunk";
 const initialState = {
   transactions: [],
+  isError: false,
 };
 
 export const transactionSlice = createSlice({
@@ -15,6 +16,13 @@ export const transactionSlice = createSlice({
   extraReducers: {
     [setTransactions.fulfilled]: (state, action) => {
       state.transactions = action.payload;
+    },
+    [setTransactionsClient.fulfilled]: (state, action) => {
+      state.transactions = action.payload;
+      state.isError = false;
+    },
+    [setTransactionsClient.rejected]: (state) => {
+      state.isError = true;
     },
   },
 });

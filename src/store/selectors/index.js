@@ -1,7 +1,7 @@
 export const employeeSelector = (state) => state.employee.employee;
-export const isValidSearchSelector = (state) => state.isValidSearch;
-export const inputSearchNumberPhoneText = (state) =>
-  state.searchInputNumberPhoneText;
+export const isValidSearchSelector = (state) =>
+  state.client.isValidSearchClient;
+export const numberPhoneSelector = (state) => state.client.numberPhone;
 export const arrayByNumberPhoneSelector = (state) =>
   state.arrayFiltereByNumberPhone;
 export const isMessageErrorAuthSelector = (state) =>

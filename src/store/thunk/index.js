@@ -1,4 +1,8 @@
-import { testLoginClient, loadListTransactions } from "../../components/API";
+import {
+  testLoginClient,
+  loadListTransactions,
+  loadListTransactionsClient,
+} from "../../components/API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setAuthErrorMessage } from "../reducer/auth";
 
@@ -29,6 +33,21 @@ export const setTransactions = createAsyncThunk(
         throw new Error(404);
       }
       return transactions;
+    } catch (error) {
+      apiThunk.rejectWithValue(error.message);
+    }
+  }
+);
+
+export const setTransactionsClient = createAsyncThunk(
+  "trans/setTransactionsClient",
+  async (numberPhoneClient, apiThunk) => {
+    try {
+      const { data } = await loadListTransactionsClient(numberPhoneClient);
+      if (!data) {
+        throw new Error(404);
+      }
+      return data.clientTransactions;
     } catch (error) {
       apiThunk.rejectWithValue(error.message);
     }
