@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import lodash from "lodash";
 import { useNavigate } from "react-router-dom";
 import {
@@ -16,6 +16,12 @@ const Auth = () => {
   const [password, setPassword] = useState(null);
   //i.agarkov
   //12345678
+  useEffect(() => {
+    if (!lodash.isEmpty(employee)) {
+      navigate("/list-transactions");
+    }
+  }, [employee]);
+
   const dispatch = useDispatch();
   return (
     <div className="flex items-center justify-center	bg-neutral-900  h-screen align">
@@ -65,9 +71,6 @@ const Auth = () => {
             onClick={(e) => {
               e.preventDefault();
               dispatch(setEmployee({ login, password }));
-              if (!lodash.isEmpty(employee)) {
-                navigate("/list-transactions");
-              }
             }}
             className=" bg-blue-700  pt-2 pb-2 text-white rounded-md w-full"
           >
