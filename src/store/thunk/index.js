@@ -32,7 +32,6 @@ export const setTransactions = createAsyncThunk(
       if (!transactions) {
         throw new Error(404);
       }
-      console.log("setTransactions :", transactions);
       return transactions;
     } catch (error) {
       apiThunk.rejectWithValue(error.message);

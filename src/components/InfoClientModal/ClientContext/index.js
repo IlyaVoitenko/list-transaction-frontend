@@ -5,7 +5,7 @@ import ClientData from "../ClientData";
 const ClientContext = ({ client }) => {
   return (
     <div className="flex flex-row-reverse justify-around">
-      <AvatarClient client={client} />
+      <AvatarClient />
       <ClientData client={client} />
     </div>
   );

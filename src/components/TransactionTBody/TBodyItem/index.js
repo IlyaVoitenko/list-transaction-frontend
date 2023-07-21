@@ -1,10 +1,8 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { splitString } from "./helper";
-import { setModalClient } from "../../../store/reducer/clients";
 
 const TBodyItem = ({ item, index }) => {
-  const dispatch = useDispatch();
   const {
     _id,
     sender,
@@ -29,7 +27,6 @@ const TBodyItem = ({ item, index }) => {
     <tr
       onClick={() => {
         // dispatch(getDetailInfoTransactionTestAction(item));
-        dispatch(setModalClient(true));
       }}
       className={
         index % 2 === 0
