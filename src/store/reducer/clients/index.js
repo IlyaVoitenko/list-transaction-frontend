@@ -3,7 +3,6 @@ import { setClient } from "../../thunk";
 
 const initialState = {
   client: {},
-  isModalClient: false,
   isValidSearchClient: false,
   numberPhone: null,
 };
@@ -12,9 +11,6 @@ export const clientSlice = createSlice({
   name: "client",
   initialState,
   reducers: {
-    setModalClient: (state, action) => {
-      state.isModalClient = action.payload;
-    },
     setNumberPhone: (state, action) => {
       state.numberPhone = action.payload;
     },
@@ -33,11 +29,7 @@ export const clientSlice = createSlice({
   },
 });
 
-export const {
-  setModalClient,
-  clearClient,
-  setIsValidSearchClient,
-  setNumberPhone,
-} = clientSlice.actions;
+export const { clearClient, setIsValidSearchClient, setNumberPhone } =
+  clientSlice.actions;
 
 export default clientSlice.reducer;

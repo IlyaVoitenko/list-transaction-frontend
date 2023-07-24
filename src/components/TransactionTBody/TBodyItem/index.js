@@ -2,7 +2,7 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { splitString } from "./helper";
 import { setDetailTransactions } from "../../../store/thunk";
-
+import { setModalWindow } from "../../../store/reducer/modal";
 const TBodyItem = ({ item, index }) => {
   const dispatch = useDispatch();
   const {
@@ -28,6 +28,7 @@ const TBodyItem = ({ item, index }) => {
   return (
     <tr
       onClick={() => {
+        dispatch(setModalWindow(true));
         dispatch(setDetailTransactions(_id));
       }}
       className={

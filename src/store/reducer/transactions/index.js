@@ -18,6 +18,9 @@ export const transactionSlice = createSlice({
     clearTransactions: (state) => {
       state.transactions = [];
     },
+    clearDetailTransaction: (state) => {
+      state.detailTransaction = {};
+    },
     setIsDetailTransaction: (state, action) => {
       state.isDetailTransaction = action.payload;
     },
@@ -46,7 +49,10 @@ export const transactionSlice = createSlice({
 });
 
 // Action creators are generated for each case reducer function
-export const { clearTransactions, setIsDetailTransaction } =
-  transactionSlice.actions;
+export const {
+  clearTransactions,
+  setIsDetailTransaction,
+  clearDetailTransaction,
+} = transactionSlice.actions;
 
 export default transactionSlice.reducer;

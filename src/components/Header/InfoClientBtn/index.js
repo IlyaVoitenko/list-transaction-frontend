@@ -1,13 +1,13 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { setModalClient } from "../../../store/reducer/clients";
+import { setModalWindow } from "../../../store/reducer/modal";
 
 function InfoClientBtn() {
   const dispatch = useDispatch();
   return (
     <button
       onClick={() => {
-        dispatch(setModalClient(true));
+        dispatch(setModalWindow(true));
       }}
       type="button"
       className="px-6
