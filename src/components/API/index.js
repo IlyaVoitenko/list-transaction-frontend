@@ -86,7 +86,7 @@ export const testLoginEmployee = async (login, password) => {
 
     return data;
   } catch (error) {
-    console.warn(error);
+    console.error(error.message);
   }
 };
 export const loadListTransactions = async () => {
@@ -94,7 +94,7 @@ export const loadListTransactions = async () => {
     const { data } = await axios.get(`${REACT_APP_TEST_GET_ALL_TRANS}/`);
     return data.trans;
   } catch (error) {
-    console.warn(error);
+    console.error(error.message);
   }
 };
 export const loadListTransactionsClient = async (numberPhoneClient) => {
@@ -104,7 +104,7 @@ export const loadListTransactionsClient = async (numberPhoneClient) => {
     );
     return transactionsClient;
   } catch (error) {
-    console.warn(error);
+    console.error(error.message);
   }
 };
 export const loadClient = async (numberPhone) => {
@@ -112,6 +112,6 @@ export const loadClient = async (numberPhone) => {
     const client = await axios.get(`${REACT_APP_CLIENT}${numberPhone}`);
     return client;
   } catch (error) {
-    console.warn(error);
+    console.error(error.message);
   }
 };
