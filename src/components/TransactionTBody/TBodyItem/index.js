@@ -1,8 +1,10 @@
 import React from "react";
 import { useDispatch } from "react-redux";
 import { splitString } from "./helper";
+import { setDetailTransactions } from "../../../store/thunk";
 
 const TBodyItem = ({ item, index }) => {
+  const dispatch = useDispatch();
   const {
     _id,
     sender,
@@ -26,7 +28,7 @@ const TBodyItem = ({ item, index }) => {
   return (
     <tr
       onClick={() => {
-        // dispatch(getDetailInfoTransactionTestAction(item));
+        dispatch(setDetailTransactions(_id));
       }}
       className={
         index % 2 === 0

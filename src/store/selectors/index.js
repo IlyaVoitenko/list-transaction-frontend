@@ -9,3 +9,6 @@ export const isMessageErrorAuthSelector = (state) =>
 export const getClientSelector = (state) => state.client.client;
 export const isModalClientSelector = (state) => state.client.isModalClient;
 export const getTestTransactions = (state) => state.trans.transactions;
+export const getIsDetailTransaction = (state) =>
+  state.trans.isDetailTransaction;
+export const getDetailTransaction = (state) => state.trans.detailTransaction;

@@ -7,6 +7,8 @@ const {
   REACT_APP_TRANSACTION_URL,
 
   REACT_APP_TEST_URL_AUTH,
+
+  REACT_APP_TEST_GET_TRANS,
   REACT_APP_TEST_GET_ALL_TRANS,
   REACT_APP_TEST_GET_ALL_TRANS_CLIENT,
 
@@ -57,7 +59,7 @@ export function loadTransactionsClient(idClient) {
 }
 export function loadDetailTransaction(id) {
   return axios
-    .get(`${REACT_APP_TRANSACTION_URL}${id}`)
+    .get(`${REACT_APP_TEST_GET_TRANS}${id}`)
     .then(({ data }) => data)
     .catch((err) => console.warn(err));
 }

@@ -20,7 +20,7 @@ const Auth = () => {
     if (!lodash.isEmpty(employee)) {
       navigate("/list-transactions");
     }
-  }, [employee]);
+  }, [employee, navigate]);
 
   const dispatch = useDispatch();
   return (

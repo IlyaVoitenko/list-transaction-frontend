@@ -2,11 +2,13 @@ import {
   loadClient,
   testLoginEmployee,
   loadListTransactions,
+  loadDetailTransaction,
   loadListTransactionsClient,
 } from "../../components/API";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import { setAuthErrorMessage } from "../reducer/auth";
 
+//employee
 export const setEmployee = createAsyncThunk(
   "employee/setEmployee",
   async (data, apiThunk) => {
@@ -23,7 +25,7 @@ export const setEmployee = createAsyncThunk(
     }
   }
 );
-
+// transactions
 export const setTransactions = createAsyncThunk(
   "trans/setTransactions",
   async (_, apiThunk) => {
@@ -38,7 +40,21 @@ export const setTransactions = createAsyncThunk(
     }
   }
 );
-
+export const setDetailTransactions = createAsyncThunk(
+  "trans/setDetailTransactions",
+  async (data, apiThunk) => {
+    try {
+      const { transaction } = await loadDetailTransaction(data);
+      if (!transaction) {
+        throw new Error(404);
+      }
+      return transaction;
+    } catch (error) {
+      apiThunk.rejectWithValue(error.message);
+    }
+  }
+);
+//client
 export const setTransactionsClient = createAsyncThunk(
   "trans/setTransactionsClient",
   async (numberPhoneClient, apiThunk) => {
