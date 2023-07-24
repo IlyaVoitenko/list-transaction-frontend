@@ -1,5 +1,5 @@
 export const filterFieldsArray = (obj) => {
   if (!obj) return;
-  const { owner, ...updatedPerson } = obj;
+  const { owner, isGot, dateReceiving, ...updatedPerson } = obj;
   return updatedPerson;
 };

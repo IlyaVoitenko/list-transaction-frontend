@@ -10,10 +10,8 @@ const SearchInput = () => {
   return (
     <div
       className={`${
-        isValidSearch === null
+        !isValidSearch
           ? "bg-Slate-800 border border-gray-900 rounded-lg"
-          : null || !isValidSearch
-          ? "border-2 border-rose-500 rounded-lg"
           : "border-2 border-green-500 rounded-lg"
       }`}
     >

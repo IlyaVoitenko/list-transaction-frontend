@@ -14,8 +14,6 @@ const TBodyItem = ({ item, index }) => {
     fromPlace,
     createdAt,
     updatedAt,
-    isGot,
-    dateReceiving,
   } = item || {};
 
   const createdData = splitString(createdAt, ".", 0);
@@ -43,9 +41,6 @@ const TBodyItem = ({ item, index }) => {
       >
         {_id}
       </th>
-      <td className="px-6 py-2">{dateReceiving}</td>
-
-      <td className="px-6 py-2">{isGot}</td>
 
       <td className="px-6 py-2"> {toPlace}</td>
       <td className="px-6 py-2">{fromPlace}</td>
