@@ -3,7 +3,7 @@ import SearchClient from "./SearchClient";
 import LogoutBtn from "./LogoutBtn";
 import NameWorker from "./NameWorker";
 import InfoClientBtn from "./InfoClientBtn";
-import FillterTransactions from "./FillterTransactions";
+// import FillterTransactions from "./FillterTransactions";
 import lodash from "lodash";
 import { useSelector } from "react-redux";
 import { getClientSelector } from "../../store/selectors";
@@ -15,7 +15,7 @@ const Header = () => {
       <NameWorker />
       <SearchClient />
       {!lodash.isEmpty(client) && <InfoClientBtn />}
-      <FillterTransactions />
+      {/* <FillterTransactions /> */}
       <LogoutBtn />
     </div>
   );
