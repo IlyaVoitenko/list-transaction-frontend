@@ -20,7 +20,6 @@ export const employeeSlice = createSlice({
       state.isLoading = false;
     },
     [setEmployee.pending]: (state) => {
-      alert("loading");
       state.isLoading = true;
     },
   },
