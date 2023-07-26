@@ -31,8 +31,8 @@ const TBodyItem = ({ item, index }) => {
       }}
       className={
         index % 2 === 0
-          ? "border-b bg-gray-900 border-gray-700 text-left"
-          : "border-b bg-gray-700 border-gray-700 text-left"
+          ? "border-b bg-gray-900 border-gray-700 text-left text-white"
+          : "border-b bg-gray-700 border-gray-700 text-left text-white"
       }
     >
       <th
