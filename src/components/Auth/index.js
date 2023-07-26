@@ -27,7 +27,7 @@ const Auth = () => {
     <div className="flex items-center justify-center	bg-neutral-900  h-screen align">
       <form className="flex flex-col items-center justify-center f  h-3/6 w-[20%] space-y-4 md:space-y-6">
         {isMessageError && (
-          <div className="flex flex-col items-center justify-center f  bg-red-700 pl-2 pr-2 pt-2 pb-2">
+          <div className="flex flex-col items-center justify-center max-sm:w-48  bg-red-700 pl-2 pr-2 pt-2 pb-2">
             <span className="text-white ">
               Error: Incorrect login or password
             </span>
@@ -66,7 +66,7 @@ const Auth = () => {
             required=""
           />
         </div>
-        <div className="flex items-center justify-center w-[60%]  ">
+        <div className="flex items-center justify-center w-[60%] max-sm:w-full  ">
           <button
             onClick={(e) => {
               e.preventDefault();

@@ -38,11 +38,9 @@ const TBodyItem = ({ item, index }) => {
       <th
         scope="row"
         className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white my-8"
-      >
-        {_id}
-      </th>
-
-      <td className="px-6 py-2"> {toPlace}</td>
+      ></th>
+      <td className="px-6 py-2">{_id}</td>
+      <td className="px-6 py-2">{toPlace}</td>
       <td className="px-6 py-2">{fromPlace}</td>
       <td className="px-6 py-2">{addressee}</td>
       <td className="px-6 py-2">{sender}</td>
