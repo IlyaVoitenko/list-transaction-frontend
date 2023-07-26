@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import lodash from "lodash";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmployee } from "../../store/thunk";
 import { useNavigate } from "react-router-dom";
+import lodash from "lodash";
 import {
   isMessageErrorAuthSelector,
   employeeSelector,
 } from "../../store/selectors";
-import { useDispatch, useSelector } from "react-redux";
-import { setEmployee } from "../../store/thunk";
 
 const Auth = () => {
   const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Auth = () => {
   }, [employee, navigate]);
 
   const dispatch = useDispatch();
+
   return (
     <div className="flex items-center justify-center	bg-neutral-900  h-screen align">
       <form className="flex flex-col items-center justify-center f  h-3/6 w-[20%] space-y-4 md:space-y-6">

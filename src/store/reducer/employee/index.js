@@ -3,6 +3,7 @@ import { setEmployee } from "../../thunk";
 
 const initialState = {
   employee: {},
+  isLoading: false,
 };
 
 export const employeeSlice = createSlice({
@@ -16,6 +17,11 @@ export const employeeSlice = createSlice({
   extraReducers: {
     [setEmployee.fulfilled]: (state, action) => {
       state.employee = { ...action.payload };
+      state.isLoading = false;
+    },
+    [setEmployee.pending]: (state) => {
+      alert("loading");
+      state.isLoading = true;
     },
   },
 });

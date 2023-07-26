@@ -2,12 +2,11 @@ import "./App.css";
 import { lazy } from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import ProtectedRoutes from "./utils/ProtectedRoutes";
-
 import Layout from "./components/Layout";
 
-const Auth = lazy(() => import("./components/Auth"));
-const MainPage = lazy(() => import("./components/MainPage"));
-const NotFound = lazy(() => import("./components/NotFound"));
+const Auth = lazy(() => import("./Pages/AuthPage"));
+const MainPage = lazy(() => import("./Pages/MainPage"));
+const NotFound = lazy(() => import("./Pages/NotFoundPage"));
 
 function App() {
   return (
