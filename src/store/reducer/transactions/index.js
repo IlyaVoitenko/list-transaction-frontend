@@ -1,9 +1,16 @@
 import { createSlice } from "@reduxjs/toolkit";
 import {
+  sortedArrayById,
+  sortedByString,
+  sortBySumma,
+  sortByDate,
+} from "./helper";
+import {
   setTransactions,
   setTransactionsClient,
   setDetailTransactions,
 } from "../../thunk";
+
 const initialState = {
   transactions: [],
   detailTransaction: {},
@@ -23,6 +30,43 @@ export const transactionSlice = createSlice({
     },
     setIsDetailTransaction: (state, action) => {
       state.isDetailTransaction = action.payload;
+    },
+    //sort
+
+    sortTransactonsByAddressee: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortedByString(first.addressee, second.addressee)
+      );
+    },
+    sortTransactonsBySender: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortedByString(first.sender, second.sender)
+      );
+    },
+    sortTransactonsBySumma: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortBySumma(parseInt(first.summa), parseInt(second.summa))
+      );
+    },
+    sortTransactonsByFromPlace: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortedByString(first.fromPlace, second.fromPlace)
+      );
+    },
+    sortTransactonsByToPlace: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortedByString(first.toPlace, second.toPlace)
+      );
+    },
+    sortTransactonsByCreated: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortByDate(first.createdAt, second.createdAt)
+      );
+    },
+    sortTransactonsByUpdated: (state) => {
+      state.transactions = state.transactions.sort((first, second) =>
+        sortByDate(first.updatedAt, second.updatedAt)
+      );
     },
   },
   extraReducers: {
@@ -53,6 +97,14 @@ export const {
   clearTransactions,
   setIsDetailTransaction,
   clearDetailTransaction,
+
+  sortTransactonsByToPlace,
+  sortTransactonsByFromPlace,
+  sortTransactonsByAddressee,
+  sortTransactonsBySumma,
+  sortTransactonsBySender,
+  sortTransactonsByCreated,
+  sortTransactonsByUpdated,
 } = transactionSlice.actions;
 
 export default transactionSlice.reducer;

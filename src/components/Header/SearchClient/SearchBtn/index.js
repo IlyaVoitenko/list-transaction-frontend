@@ -7,7 +7,7 @@ const SearchBtn = () => {
   const dispatch = useDispatch();
   const numberPhoneClient = useSelector(numberPhoneSelector);
   return (
-    <div className="ml-2 flex ">
+    <div className="ml-2 flex mr-2">
       <button
         type="button"
         onClick={

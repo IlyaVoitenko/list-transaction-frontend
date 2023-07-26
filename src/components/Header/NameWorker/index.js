@@ -6,7 +6,7 @@ const NameWorker = () => {
   const employee = useSelector(employeeSelector);
   const { role, login } = employee;
   return (
-    <div>
+    <div className="flex h-full items-center	">
       {role} : {login}
     </div>
   );

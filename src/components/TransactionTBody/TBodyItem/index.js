@@ -1,8 +1,9 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { splitString } from "./helper";
+import moment from "moment";
 import { setDetailTransactions } from "../../../store/thunk";
 import { setModalWindow } from "../../../store/reducer/modal";
+
 const TBodyItem = ({ item, index }) => {
   const dispatch = useDispatch();
   const {
@@ -16,12 +17,8 @@ const TBodyItem = ({ item, index }) => {
     updatedAt,
   } = item || {};
 
-  const createdData = splitString(createdAt, ".", 0);
-  const updatedData = splitString(updatedAt, ".", 0);
-  const createdYear = splitString(createdData, "T", 0);
-  const createdTime = splitString(createdData, "T", 1);
-  const updatedYear = splitString(updatedData, "T", 0);
-  const updatedTime = splitString(updatedData, "T", 1);
+  const updateDate = moment(createdAt).format("MMMM Do YYYY, h:mm:ss");
+  const createDate = moment(updatedAt).format("MMMM Do YYYY, h:mm:ss");
 
   return (
     <tr
@@ -46,12 +43,8 @@ const TBodyItem = ({ item, index }) => {
       <td className="px-6 py-2">{addressee}</td>
       <td className="px-6 py-2">{sender}</td>
       <td className="px-6 py-2">{summa}</td>
-      <td className="px-6 py-2">
-        {createdYear} {createdTime}
-      </td>
-      <td className="px-6 py-2">
-        {updatedYear} {updatedTime}
-      </td>
+      <td className="px-6 py-2">{updateDate}</td>
+      <td className="px-6 py-2">{createDate}</td>
     </tr>
   );
 };

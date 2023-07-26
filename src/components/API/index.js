@@ -51,12 +51,7 @@ export function loadDetailTransaction(id) {
     .then(({ data }) => data)
     .catch((err) => console.warn(err));
 }
-export function loadGetUsers(login, password) {
-  return axios
-    .get(`http://localhost:4001/users?login=${login}&password=${password}`)
-    .then(({ data }) => data)
-    .catch((err) => console.warn(err));
-}
+
 export function loadSearchNumberPhone(textSearchInput) {
   return axios
     .get(
