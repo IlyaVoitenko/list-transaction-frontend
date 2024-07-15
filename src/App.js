@@ -13,13 +13,15 @@ function App() {
     <div className="App">
       <BrowserRouter>
         <Routes>
-          <Route path="/" element={<Layout />}>
+          <Route path="/" element={<MainPage />} />
+
+          {/* <Route path="/" element={<Layout />}>
             <Route element={<ProtectedRoutes />}>
               <Route path="/list-transactions" element={<MainPage />} />
             </Route>
             <Route path="*" element={<NotFound />} />
             <Route index element={<Auth />} />
-          </Route>
+          </Route> */}
         </Routes>
       </BrowserRouter>
     </div>

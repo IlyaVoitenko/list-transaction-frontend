@@ -17,6 +17,7 @@ const MainPage = () => {
     <div className="flex flex-col h-screen bg-neutral-900">
       <Header />
       <TransactionsTable />
+
       {isModal && <InfoClientModal client={client} trans={detailTransaction} />}
       <Footer />
     </div>

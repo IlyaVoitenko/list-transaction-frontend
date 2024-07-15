@@ -36,15 +36,15 @@ const TBodyItem = ({ item, index }) => {
         scope="row"
         className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white my-8"
       >
-        {_id}
+        {_id || index}
       </th>
-      <td className="px-6 py-2">{toPlace}</td>
-      <td className="px-6 py-2">{fromPlace}</td>
-      <td className="px-6 py-2">{addressee}</td>
-      <td className="px-6 py-2">{sender}</td>
-      <td className="px-6 py-2">{summa}</td>
-      <td className="px-6 py-2">{updateDate}</td>
-      <td className="px-6 py-2">{createDate}</td>
+      <td className="px-6 py-2">{toPlace || "usa"}</td>
+      <td className="px-6 py-2">{fromPlace || "ukraine"}</td>
+      <td className="px-6 py-2">{addressee || "15 street"}</td>
+      <td className="px-6 py-2">{sender || "user 1 "}</td>
+      <td className="px-6 py-2">{summa || 300}</td>
+      <td className="px-6 py-2">{updateDate || "02.03.2024"}</td>
+      <td className="px-6 py-2">{createDate || "01.03.2024"}</td>
     </tr>
   );
 };

@@ -14,7 +14,8 @@ const Header = () => {
     <div className="flex text-white justify-around items-center  h-[7%]">
       <NameWorker />
       <SearchClient />
-      {!lodash.isEmpty(client) && <InfoClientBtn />}
+      {/* {!lodash.isEmpty(client) && <InfoClientBtn />} */}
+      <InfoClientBtn />
       <FillterTransactions />
       <LogoutBtn />
     </div>

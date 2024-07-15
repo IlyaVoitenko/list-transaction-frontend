@@ -2,10 +2,12 @@ import React from "react";
 import TBodyItem from "./TBodyItem";
 
 const TransactionTBody = ({ trans = [] }) => {
+  const emptyArray = Array(5).fill(null);
+
   return (
     <tbody>
-      {trans.map((item, index) => (
-        <TBodyItem key={item._id} item={item} index={index} />
+      {emptyArray.map((item, index) => (
+        <TBodyItem key={index} item={item} index={index} />
       ))}
     </tbody>
   );

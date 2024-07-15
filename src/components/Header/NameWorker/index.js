@@ -7,7 +7,7 @@ const NameWorker = () => {
   const { role, login } = employee;
   return (
     <div className="flex h-full items-center	">
-      {role} : {login}
+      {role || "user"} : {login || "user"}
     </div>
   );
 };
